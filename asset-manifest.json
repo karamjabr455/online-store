@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/online-store/static/css/main.23194fb9.css",
+    "main.js": "/online-store/static/js/main.7c11f4ed.js",
+    "static/media/background-image.png": "/online-store/static/media/background-image.d1afa9c22169d1dda581.png",
+    "static/media/flower-image.png": "/online-store/static/media/flower-image.58b1d9b2581ac924bd4f.png",
+    "static/media/Rectangle 16.png": "/online-store/static/media/Rectangle 16.9b7d33478e1cf3a84933.png",
+    "static/media/service-image.png": "/online-store/static/media/service-image.628174a5fb8dc16d44bd.png",
+    "static/media/logo.png": "/online-store/static/media/logo.242894ad8478ec0371f1.png",
+    "static/media/image2.png": "/online-store/static/media/image2.6b1154b788ad35b4bd5f.png",
+    "static/media/image3.png": "/online-store/static/media/image3.05846c357813f5b73eb0.png",
+    "static/media/image1.png": "/online-store/static/media/image1.4c379fd556685261ccf8.png",
+    "index.html": "/online-store/index.html",
+    "main.23194fb9.css.map": "/online-store/static/css/main.23194fb9.css.map",
+    "main.7c11f4ed.js.map": "/online-store/static/js/main.7c11f4ed.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.23194fb9.css",
+    "static/js/main.7c11f4ed.js"
+  ]
+}
