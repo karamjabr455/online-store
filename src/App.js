@@ -8,19 +8,20 @@ import LogIn from './LogIn';
 import Verify from "./Verify";
 import Welcome from "./Welcome";
 import Home from "./Home";
-import Services from './Services';  // استيراد صفحة Services
+import Services from './Services'; 
 
 function App() {
   return (
     <Router>
       <Routes>
+      <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        
         <Route path="/" element={<Home />} /> 
         <Route path="/verify" element={<Verify />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/services" element={<Services />} />  {/* إضافة مسار صفحة Services */}
+        <Route path="/services" element={<Services />} /> 
       </Routes>
     </Router>
   );

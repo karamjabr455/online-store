@@ -1,11 +1,11 @@
-// src/Welcome.jsx
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import BackgroundImage from "./images/background-image.png";
 import Logo from "./images/logo.png";
 
-// يمكنك استبدال هذه الصور بالصور المطلوبة في المشروع
+
 import Image1 from "./images/image1.png";
 import Image2 from "./images/image2.png";
 import Image3 from "./images/image3.png";
@@ -13,18 +13,18 @@ import Image3 from "./images/image3.png";
 const Welcome = () => {
   const navigate = useNavigate();
 
-  // حالة المودال
+//Module status
   const [showModal, setShowModal] = useState(false);
 
-  // دالة تسجيل الخروج
+// Logout function
   const handleLogout = () => {
-    setShowModal(true); // إظهار المودال عند الضغط على تسجيل الخروج
+    setShowModal(true); // Show the module when you click log out
   };
 
-  // دالة تنفيذ الخروج الفعلي
+// Function that implements the actual exit
   const confirmLogout = () => {
-    // قم بإجراء عملية تسجيل الخروج هنا (مثل إزالة البيانات من التخزين المحلي)
-    navigate("/login"); // توجيه المستخدم إلى صفحة تسجيل الدخول
+    
+    navigate("/login"); // Direct the user to the login page
   };
 
   return (
@@ -53,7 +53,7 @@ const Welcome = () => {
           border: "2px solid rgba(255, 255, 255, 0.7)",
         }}
       >
-        {/* زر تسجيل الخروج */}
+        {/* Log out button */}
         <button
           onClick={handleLogout}
           className="absolute top-4 right-4 bg-[#7C8761AB] text-white px-4 py-2 rounded-full hover:bg-[#6b7856] transition"
@@ -61,12 +61,12 @@ const Welcome = () => {
           Logout
         </button>
 
-        {/* نص الترحيب */}
+        {/* Welcome text */}
         <h1 className="text-xl sm:text-2xl font-bold text-black mb-8 mt-6">
           Welcome to our store
         </h1>
 
-        {/* عرض الصور */}
+       {/* View images */}
         <div className="flex flex-wrap justify-center gap-6 mt-12">
           <img
             src={Image1}

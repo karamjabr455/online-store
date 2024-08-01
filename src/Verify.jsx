@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PlantBackground from "./images/Rectangle 16.png";
 import Logo from "./images/logo.png";
-import { FaShieldAlt } from 'react-icons/fa'; // استبدال الأيقونة بشعار درع مع إشارة صح
-import BackgroundImage from '../src/images/background-image.png'; // الصورة الخلفية
+import { FaShieldAlt } from 'react-icons/fa';
+import BackgroundImage from '../src/images/background-image.png'; 
 import './animations.css';
 
 function Verify() {
@@ -30,9 +30,9 @@ function Verify() {
           alt="Plants Background"
           className="object-cover opacity-70 rounded-lg shadow-inner"
           style={{
-            width: "400px", // يجعل الصورة تتناسب مع حجم الفورم
+            width: "400px", 
            
-            height: "350px", // الحفاظ على نسبة العرض إلى الارتفاع
+            height: "350px", 
             transform: "translateX(-50%)",
             borderRadius: "50px",
           }}
@@ -44,7 +44,7 @@ function Verify() {
         className="relative z-10 bg-[#6d996e] bg-opacity-90 backdrop-blur-lg rounded-lg shadow-[inset_0_0_50px_rgba(255,255,255,0.5)] w-full max-w-lg p-6 sm:p-8 flex flex-col items-center lg:ml-32"
         style={{
           borderRadius: "50px", 
-          border: "2px solid rgba(255, 255, 255, 0.7)", // حواف بيضاء بشفافية
+          border: "2px solid rgba(255, 255, 255, 0.7)", 
         }}
       >
         <div className="text-center mb-4">

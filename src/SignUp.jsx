@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PlantBackground from "./images/Rectangle 16.png";
 import BackgroundImage from "./images/background-image.png";
-import Logo from "./images/logo.png"; // تأكد من تحديث المسار
+import Logo from "./images/logo.png"; 
 import { FaUserPlus } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -29,7 +29,7 @@ function SignUp() {
           alt="Logo"
           className="w-32 h-auto mr-4 max-w-full"
           style={{
-            transform: "translateX(20px)", // إزاحة اللوجو نحو اليمين
+            transform: "translateX(20px)", 
           }}
         />
       </div>

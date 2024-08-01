@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaSearch, FaShoppingCart, FaHeart, FaTimes, FaBars } from 'react-icons/fa'; // استيراد الأيقونات
-import Logo from './images/logo.png'; // تأكد من استبدال هذا بالمسار الصحيح للشعار
-import BackgroundImage from './images/background-image.png'; // تأكد من استبدال هذا بالمسار الصحيح لصورة الخلفية
-import ServiceImage from './images/service-image.png'; // تأكد من استبدال هذا بالمسار الصحيح لصورة الخدمة
+import { FaSearch, FaShoppingCart, FaHeart, FaTimes, FaBars } from 'react-icons/fa'; 
+import Logo from './images/logo.png'; 
+import BackgroundImage from './images/background-image.png';
+import ServiceImage from './images/service-image.png'; 
 
 function Services() {
   const [searchVisible, setSearchVisible] = useState(false);
@@ -26,7 +26,7 @@ function Services() {
       <nav className="fixed top-0 left-0 right-0 bg-transparent backdrop-blur-lg p-4 flex items-center justify-between z-50 border-b border-transparent shadow-none">
         <div className="container mx-auto flex items-center justify-between px-4 md:px-6 lg:px-12 xl:px-24">
           <div className="flex items-center space-x-4 md:space-x-6">
-            <img src={Logo} alt="Logo" className="w-12 h-auto" /> {/* حجم الشعار مصغر */}
+            <img src={Logo} alt="Logo" className="w-12 h-auto" /> 
             <div className="hidden md:flex space-x-6">
               <Link to="/" className="text-white font-semibold hover:text-gray-300 transition">Home</Link>
               <Link to="/about" className="text-white font-semibold hover:text-gray-300 transition">About Us</Link>
@@ -99,7 +99,7 @@ function Services() {
 
         {/* Image and Rectangles Section */}
         <div className="relative flex flex-col items-center">
-          <img src={ServiceImage} alt="Service" className="w-60 md:w-80 h-auto mb-8 md:mb-12" /> {/* حجم الصورة أكبر */}
+          <img src={ServiceImage} alt="Service" className="w-60 md:w-80 h-auto mb-8 md:mb-12" /> 
           {/* Rectangles */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
             <div className="w-full h-16 bg-[#D9D9D9] flex items-center justify-center rounded-lg text-center text-sm font-poppins">
