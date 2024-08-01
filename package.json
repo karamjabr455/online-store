@@ -2,7 +2,7 @@
   "name": "blank_project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "git add .",
+  "homepage": "http://karamjabr455.github.io/online-store",
   "dependencies": {
     "@react-spring/web": "^9.7.4",
     "@testing-library/jest-dom": "^5.17.0",
