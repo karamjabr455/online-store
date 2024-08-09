@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaSearch, FaShoppingCart, FaHeart, FaTimes, FaBars } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaHeart, FaTimes, FaBars, FaSignOutAlt, FaGooglePlay, FaApple } from "react-icons/fa";
 import Logo from "./images/logo.png";
 import BackgroundImage from "./images/background-image.png";
 import FlowerImage from "./images/flower-image.png";
 import { useSpring, animated } from '@react-spring/web';
+import AboutUsSection from './AboutUsSection'; 
 
 function Home() {
   const [searchVisible, setSearchVisible] = useState(false);
@@ -77,6 +78,13 @@ function Home() {
             <Link to="/favorites" className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100">
               <FaHeart className="text-black" />
             </Link>
+            {/* Logout Button */}
+            <button
+              onClick={() => alert("Logged out")} // Replace with your logout function
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100"
+            >
+              <FaSignOutAlt className="text-black" />
+            </button>
             <button
               onClick={toggleMenu}
               className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100"
@@ -150,7 +158,39 @@ function Home() {
               <span>95 %<br />Happy Customers</span>
             </p>
           </div>
+
+          {/* App Buttons */}
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6 mt-12">
+            <a
+              href="https://play.google.com/store/apps"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center bg-transparent border-2 border-[#ACB39B] text-[#FFFFFF] font-semibold rounded-lg shadow-md hover:bg-[#ACB39B] hover:text-white transition px-6 py-3"
+            >
+              <FaGooglePlay
+                className="mr-3"
+                style={{ width: '2.5rem', height: '2.5rem', color: '#3DDC84' }}
+              />
+              <span className="text-lg">Get it on <br></br>Google Play</span>
+            </a>
+            <a
+              href="https://www.apple.com/app-store/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center bg-transparent border-2 border-[#ACB39B] text-[#FFFFFF] font-semibold rounded-lg shadow-md hover:bg-[#ACB39B] hover:text-white transition px-6 py-3"
+            >
+              <FaApple
+                className="mr-3"
+                style={{ width: '2.5rem', height: '2.5rem', color: 'white' }}
+              />
+              <span className="text-lg">Available on the<br></br> App Store</span>
+            </a>
+          </div>
         </animated.section>
+
+        {/* Use new component here */}
+        <AboutUsSection />
+
       </div>
     </div>
   );

@@ -69,3 +69,39 @@
   }
 }
 
+
+/* Dark mode */
+.dark-mode {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+  color: #e0e0e0; 
+}
+
+/* Dark background for registration or login form */
+.bg-dark-form {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+}
+
+/* Dark background for button */
+.bg-dark-button {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+}
+
+.bg-dark-button-secondary {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+}
+
+/* Text and links in dark mode */
+.text-dark-title {
+  color: #e0e0e0; /* Color of titles and links */
+}
+
+.text-dark-secondary {
+  color: #fffefe; /* Secondary text color in dark mode */
+}
+.text-dark-link {
+  color: #e0e0e0;/* Color of links in dark mode */
+}
+
+
+
+
