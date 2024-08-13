@@ -1,0 +1,62 @@
+{
+  "login": {
+    "title": "تسجيل الدخول",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "phonePlaceholder": "رقم الهاتف",
+    "passwordPlaceholder": "كلمة المرور",
+    "button": "تسجيل الدخول",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "noAccount": "ليس لديك حساب؟",
+    "signupLink": "تسجيل"
+  },
+  "signup": {
+    "title": "تسجيل حساب",
+    "usernamePlaceholder": "اسم المستخدم",
+    "phonePlaceholder": "رقم الهاتف",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "كلمة المرور",
+    "confirmPasswordPlaceholder": "تأكيد كلمة المرور",
+    "uploadCertificate": "تحميل الشهادة",
+    "registerButton": "تسجيل",
+    "loginText": "هل لديك حساب بالفعل؟",
+    "loginLink": "تسجيل الدخول"
+  }
+  ,
+  "verify": {
+    "title": "أدخل الرمز",
+    "verificationText": "تم إرسال رمز التحقق إلى بريدك الإلكتروني: <span class='font-bold'>*****@gmail.com</span>",
+    "detailsText": "الرمز يتكون من 6 أرقام تحتوي على أحرف وأرقام وصالح لمدة 10 دقائق.",
+    "placeholder": "",
+    "button": "تحقق"
+  }
+  ,"welcome": {
+    "title": "مرحبا بك في متجرنا",
+    "logoutButton": "تسجيل الخروج",
+    "modalTitle": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "modalLogout": "تسجيل الخروج",
+    "modalCancel": "إلغاء"
+  }
+  ,
+  "home": {
+    "home": "الصفحة الرئيسية",
+    "about_us": "معلومات عنا",
+    "products": "المنتجات",
+    "services": "الخدمات",
+    "contact_us": "اتصل بنا",
+    "search_placeholder": "ابحث...",
+    "artificial_flowers": "زهور صناعية",
+    "unique_flowers": "زهور فريدة توصل إلى باب منزلك",
+    "description": "تقدم Ovalos زهور صناعية يدوية لجعل منزلك جميلاً.",
+    "shop_now": "تسوق الآن",
+    "flower_image_alt": "زهور صناعية",
+    "product_sold": "10 مليون منتج مبيع",
+    "gifts_last_year": "260 ألف هدية أُرسلت العام الماضي",
+    "happy_customers": "95 % زبائن سعداء",
+    "get_it_on_google_play": "احصل عليها على جوجل بلاي",
+    "available_on_app_store": "متوفر على متجر أبل",
+    "logout_message": "تم تسجيل الخروج"
+  },
+  "confirmSaveChanges": "هل تريد حفظ التغييرات؟",
+  "yes": "نعم",
+  "no": "لا"
+  }

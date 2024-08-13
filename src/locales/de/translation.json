@@ -1,0 +1,54 @@
+{
+  "login": {
+    "title": "Anmelden",
+    "emailPlaceholder": "E-Mail",
+    "phonePlaceholder": "Telefon",
+    "passwordPlaceholder": "Passwort",
+    "button": "Anmelden",
+    "forgotPassword": "Passwort vergessen?",
+    "noAccount": "Haben Sie kein Konto?",
+    "signupLink": "Registrieren"
+  },
+  "signup": {
+    "title": "Registrieren",
+    "usernamePlaceholder": "Benutzername",
+    "phonePlaceholder": "Telefonnummer",
+    "emailPlaceholder": "E-Mail",
+    "passwordPlaceholder": "Passwort",
+    "confirmPasswordPlaceholder": "Passwort bestätigen",
+    "uploadCertificate": "Zertifikat hochladen",
+    "registerButton": "Registrieren",
+    "loginText": "Haben Sie bereits ein Konto?",
+    "loginLink": "Anmelden"
+  }
+  ,
+  "verify": {
+    "title": "Code eingeben",
+    "verificationText": "Der Bestätigungscode wurde an Ihre E-Mail-Adresse gesendet: <span class='font-bold'>*****@gmail.com</span>",
+    "detailsText": "Der Code besteht aus 6 Ziffern mit Buchstaben und Zahlen und ist 10 Minuten gültig.",
+    "placeholder": "",
+    "button": "Bestätigen"
+  }
+  ,"welcome": {
+    "title": "Willkommen in unserem Geschäft",
+    "logoutButton": "Abmelden",
+    "modalTitle": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+    "modalLogout": "Abmelden",
+    "modalCancel": "Abbrechen"
+  }
+  ,
+  "home": {
+    "searchPlaceholder": "Suchen...",
+    "uniqueFlowersTitle": "Einzigartige Blumen direkt zu Ihnen nach Hause geliefert",
+    "uniqueFlowersDescription": "Ovalos bietet handgefertigte Kunstblumen an, um Ihr Zuhause schön zu machen.",
+    "shopNow": "Jetzt einkaufen",
+    "productSold": "10 M\nProdukte verkauft",
+    "giftsSent": "260 K\nGeschenke im letzten Jahr verschickt",
+    "happyCustomers": "95 %\nZufriedene Kunden",
+    "googlePlay": "Holen Sie es auf \nGoogle Play",
+    "appStore": "Erhältlich im\nApp Store"
+  }
+  ,  "confirmSaveChanges": "Möchten Sie die Änderungen speichern?",
+  "yes": "Ja",
+  "no": "Nein"
+}

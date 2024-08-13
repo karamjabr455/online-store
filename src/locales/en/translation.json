@@ -1,0 +1,52 @@
+{
+  "login": {
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "phonePlaceholder": "Phone",
+    "passwordPlaceholder": "Password",
+    "button": "Login",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "signupLink": "Sign Up"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "usernamePlaceholder": "Username",
+    "phonePlaceholder": "Phone Number",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "uploadCertificate": "Upload Certificate",
+    "registerButton": "Register",
+    "loginText": "Already have an account?",
+    "loginLink": "Login"
+  },
+  "verify": {
+    "title": "Enter Code",
+    "verificationText": "The verification code has been sent to your email address: <span class='font-bold'>*****@gmail.com</span>",
+    "detailsText": "The code consists of 6 digits with letters and numbers and is valid for 10 minutes.",
+    "placeholder": "",
+    "button": "Confirm"
+  },
+  "welcome": {
+    "title": "Welcome to Our Store",
+    "logoutButton": "Logout",
+    "modalTitle": "Are you sure you want to log out?",
+    "modalLogout": "Logout",
+    "modalCancel": "Cancel"
+  },
+  "home": {
+    "searchPlaceholder": "Search...",
+    "uniqueFlowersTitle": "Unique Flowers Delivered Directly to Your Home",
+    "uniqueFlowersDescription": "Ovalos offers handcrafted artificial flowers to beautify your home.",
+    "shopNow": "Shop Now",
+    "productSold": "10 M\nProducts Sold",
+    "giftsSent": "260 K\nGifts Sent Last Year",
+    "happyCustomers": "95 %\nSatisfied Customers",
+    "googlePlay": "Get it on \nGoogle Play",
+    "appStore": "Available on\nApp Store"
+  },
+  "confirmSaveChanges": "Do you want to save changes?",
+  "yes": "Yes",
+  "no": "No"
+}

@@ -1,0 +1,107 @@
+/* Animation Keyframes */
+@keyframes slideInImage {
+  from {
+    transform: translateX(-200px); /* Start value */
+  }
+  to {
+    transform: translateX(300px); /* End value */
+  }
+}
+
+@keyframes slideInForm {
+  from {
+    transform: translateX(100px); /* Start value */
+  }
+  to {
+    transform: translateX(-20); /* End value */
+  }
+}
+
+.animate-slide-in-image {
+  animation: slideInImage 1s ease-out forwards;
+}
+
+.animate-slide-in-form {
+  animation: slideInForm 1s ease-out forwards;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  /* Smaller laptops and tablets */
+  .animate-slide-in-image {
+    display: none;
+  }
+  
+  .animate-slide-in-form {
+    width: 90%;
+    padding: 3rem 1.5rem;
+  }
+  
+  .absolute img {
+    width: 16rem;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Tablets and larger phones */
+  .absolute img {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small phones */
+  .absolute img {
+    width: 12rem;
+  }
+  
+  .animate-slide-in-form {
+    padding: 2.5rem 1rem;
+  }
+  
+  .text-center h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-center .text-4xl {
+    font-size: 3rem;
+  }
+}
+
+
+/* Dark mode */
+.dark-mode {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+  color: #e0e0e0; 
+}
+
+/* Dark background for registration or login form */
+.bg-dark-form {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+}
+
+/* Dark background for button */
+.bg-dark-button {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+}
+
+.bg-dark-button-secondary {
+  background: linear-gradient(135deg, #334B2A 50%, #081C0B 100%);
+}
+
+/* Text and links in dark mode */
+.text-dark-title {
+  color: #e0e0e0; /* Color of titles and links */
+}
+
+.text-dark-secondary {
+  color: #fffefe; /* Secondary text color in dark mode */
+}
+.text-dark-link {
+  color: #e0e0e0;/* Color of links in dark mode */
+}
+
+
+
+

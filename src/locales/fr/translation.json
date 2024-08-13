@@ -1,0 +1,54 @@
+{
+  "login": {
+    "title": "Connexion",
+    "emailPlaceholder": "Email",
+    "phonePlaceholder": "Téléphone",
+    "passwordPlaceholder": "Mot de passe",
+    "button": "Se connecter",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signupLink": "S'inscrire"
+  },
+  "signup": {
+    "title": "S'inscrire",
+    "usernamePlaceholder": "Nom d'utilisateur",
+    "phonePlaceholder": "Numéro de téléphone",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Mot de passe",
+    "confirmPasswordPlaceholder": "Confirmer le mot de passe",
+    "uploadCertificate": "Télécharger le certificat",
+    "registerButton": "S'inscrire",
+    "loginText": "Vous avez déjà un compte ?",
+    "loginLink": "Se connecter"
+  }
+  ,
+  "verify": {
+    "title": "Entrer le code",
+    "verificationText": "Le code de vérification a été envoyé à votre adresse e-mail : <span class='font-bold'>*****@gmail.com</span>",
+    "detailsText": "Le code est composé de 6 chiffres contenant des lettres et des chiffres et est valide pendant 10 minutes.",
+    "placeholder": "",
+    "button": "Vérifier"
+  }
+  , "welcome": {
+    "title": "Bienvenue dans notre magasin",
+    "logoutButton": "Déconnexion",
+    "modalTitle": "Êtes-vous sûr de vouloir vous déconnecter ?",
+    "modalLogout": "Déconnexion",
+    "modalCancel": "Annuler"
+  }
+  , "home": {
+    "searchPlaceholder": "Chercher...",
+    "uniqueFlowersTitle": "Des fleurs uniques livrées à votre porte",
+    "uniqueFlowersDescription": "Ovalos fournit des fleurs artificielles faites main pour embellir votre maison.",
+    "shopNow": "Achetez maintenant",
+    "productSold": "10 M\nProduits vendus",
+    "giftsSent": "260 K\nCadeaux envoyés l'année dernière",
+    "happyCustomers": "95 %\nClients satisfaits",
+    "googlePlay": "Obtenez-le sur \nGoogle Play",
+    "appStore": "Disponible sur\nApp Store"
+  }
+  ,
+  "confirmSaveChanges": "Voulez-vous enregistrer les modifications ?",
+  "yes": "Oui",
+  "no": "Non"
+}

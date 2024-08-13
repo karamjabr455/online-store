@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+  }
+  
+  /* RTL styles */
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
