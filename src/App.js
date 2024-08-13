@@ -4,7 +4,7 @@ import './index.css';
 import '../src/animations.css';
 import './i18n'; 
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'; 
 import SignUp from './SignUp';
 import LogIn from './LogIn';
 import Verify from "./Verify";
@@ -30,14 +30,13 @@ const ThemeToggleButton = () => {
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <Router> 
         <div>
           <nav>
             <LanguageSwitcher />
             <ThemeToggleButton />
           </nav>
           <Routes>
-            
             <Route path="/" element={<SignUp />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<LogIn />} />
