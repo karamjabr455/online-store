@@ -1,17 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PlantBackground from "./images/Rectangle 16.png";
-import Logo from "./images/logo.png";
-import { FaSignInAlt } from "react-icons/fa";
-import BackgroundImage from "./images/background-image.png";
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // تأكد من استيراد Link هنا
+import PlantBackground from './images/Rectangle 16.png';
+import Logo from './images/logo.png';
+import { FaSignInAlt } from 'react-icons/fa';
+import BackgroundImage from './images/background-image.png';
 import './App.css';
 import { useTranslation } from 'react-i18next';
-import { useContext } from 'react';
-import { ThemeContext } from './ThemeContext'; 
+import { ThemeContext } from './ThemeContext';
+import LanguageSwitcher from './components/LanguageSwitcher';
+
+const ThemeToggleButton = () => {
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+
+  return (
+    <button
+      onClick={toggleDarkMode}
+      className="theme-toggle-button"
+    >
+      {darkMode ? '☀️' : '🌙'}
+    </button>
+  );
+};
 
 function LogIn() {
   const { t } = useTranslation();
-  const { darkMode } = useContext(ThemeContext); // Use ThemeContext to check dark mode
+  const { darkMode } = useContext(ThemeContext);
+  const navigate = useNavigate(); // تهيئة useNavigate
+
+  const handleLogin = (event) => {
+    event.preventDefault(); // منع التحديث التلقائي للصفحة
+    // التوجيه إلى صفحة الهوم
+    navigate('/home');
+  };
 
   return (
     <div
@@ -25,7 +45,11 @@ function LogIn() {
         overflow: "hidden",
       }}
     >
-      {/* Logo */}
+      <nav className="navbar">
+        <LanguageSwitcher />
+        <ThemeToggleButton />
+      </nav>
+
       <div className={`absolute top-4 left-4 md:top-8 md:left-16 hidden lg:block ${darkMode ? 'text-dark-title' : 'text-black'}`}>
         <img
           src={Logo}
@@ -34,7 +58,6 @@ function LogIn() {
         />
       </div>
 
-      {/* Image Background */}
       <div
         className={`absolute inset-0 flex items-center justify-center hidden lg:flex animate-slide-in-image ${darkMode ? 'bg-dark-overlay' : ''}`}
       >
@@ -50,7 +73,6 @@ function LogIn() {
         />
       </div>
 
-      {/* Form Container */}
       <div
         className={`relative z-10 flex flex-col items-center justify-center w-full max-w-lg p-6 ${darkMode ? 'bg-dark-form' : 'bg-[#6d996e]'} bg-opacity-90 backdrop-blur-lg rounded-lg shadow-[inset_0_0_50px_rgba(255,255,255,0.5)] animate-slide-in-form`}
         style={{
@@ -63,8 +85,7 @@ function LogIn() {
           </h2>
           <FaSignInAlt className={`text-4xl sm:text-5xl mx-auto p-3 rounded-full shadow-md ${darkMode ? 'text-dark-title bg-gray-700' : 'text-black bg-white'}`} />
         </div>
-        <form className="space-y-4 w-full max-w-xs flex flex-col items-center">
-          {/* Form Inputs */}
+        <form className="space-y-4 w-full max-w-xs flex flex-col items-center" onSubmit={handleLogin}>
           <div className="flex flex-col space-y-4 w-full">
             <input
               type="email"
@@ -84,12 +105,12 @@ function LogIn() {
           </div>
 
           <div className="flex flex-col space-y-4 mt-4 w-full">
-            <Link
-              to="/dashboard"
+            <button
+              type="submit"
               className={`w-full py-3 rounded-full border border-white hover:bg-[#5a6c50] transition text-sm text-center ${darkMode ? 'bg-dark-button text-white' : 'bg-[#6c825a] text-white'}`}
             >
               {t('login.button')}
-            </Link>
+            </button>
 
             <div className={`text-center ${darkMode ? 'text-dark-title' : 'text-green-800'}`}>
               <a

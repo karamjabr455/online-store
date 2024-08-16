@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PlantBackground from "./images/Rectangle 16.png";
 import BackgroundImage from "./images/background-image.png";
@@ -6,8 +6,9 @@ import Logo from "./images/logo.png";
 import { FaUserPlus } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
-import { useContext } from 'react';
-import { ThemeContext } from './ThemeContext'; 
+import { ThemeContext } from './ThemeContext';
+import LanguageSwitcher from './components/LanguageSwitcher';
+import ThemeToggleButton from './components/ThemeToggleButton';
 
 function SignUp() {
   const { t } = useTranslation();
@@ -29,6 +30,11 @@ function SignUp() {
         backgroundPosition: "center",
       }}
     >
+      <nav className="navbar">
+        <LanguageSwitcher />
+        <ThemeToggleButton />
+      </nav>
+
       {/* Logo - hidden on screens smaller than large */}
       <div className={`absolute top-4 left-4 flex items-center hidden lg:flex ${darkMode ? 'text-dark-title' : 'text-black'}`}>
         <img
@@ -127,7 +133,7 @@ function SignUp() {
                 <input id="file-upload" type="file" className="hidden" />
                 <label
                   htmlFor="file-upload"
-                  className={`flex items-center justify-start w-full border-b bg-transparent focus:outline-none text-sm cursor-pointer ${darkMode ? 'text-dark-title border-gray-600 placeholder-gray-400' : 'text-white border-gray-300 placeholder-white'}`}
+                  className={`flex items-center justify-start w-full border-b bg-transparent focus:outline-none text-sm cursor-pointer ${darkMode ? 'text-dark-title border-gray-600 placeholder-gray-400' : 'text-white border-gray-300 placeholder-gray-300'}`}
                   style={{
                     padding: "10px 0",
                     textAlign: "left",

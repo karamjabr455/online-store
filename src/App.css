@@ -69,6 +69,18 @@
   }
 }
 
+.theme-toggle-button {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  color: white; /* تعيين لون الأيقونات */
+}
+
+.theme-toggle-button:hover {
+  color: #ccc; /* تغيير اللون عند التمرير فوق الأيقونة */
+}
 
 /* Dark mode */
 .dark-mode {
@@ -102,6 +114,48 @@
   color: #e0e0e0;/* Color of links in dark mode */
 }
 
+/* Ensure the app container takes full height */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure navbar is above other content */
+}
 
+/* Styling for theme toggle button */
+.theme-toggle-button {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.theme-toggle-button:hover {
+  color: #333; /* Change color on hover */
+}
+
+/* Optional: Style for LanguageSwitcher if needed */
+.language-switcher {
+  /* Add any specific styles for LanguageSwitcher here */
+}
+
+/* إخفاء الصورة في الشاشات أقل من 1025 بكسل */
+@media (max-width: 1024px) {
+  .hide-on-small {
+    display: none;
+  }
+}
