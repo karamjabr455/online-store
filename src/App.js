@@ -12,7 +12,7 @@ import SignUp from './SignUp';
 import LogIn from './LogIn';
 import Verify from "./Verify";
 import Welcome from "./Welcome";
-
+import Productsdetails from './Productsdetails'
 import Home from './components/Home'; 
 
 import { ThemeProvider } from './ThemeContext'; 
@@ -29,6 +29,7 @@ function App() {
             <Route path="/verify" element={<Verify />} />
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/products" element={<Productsdetails />} />
           </Routes>
         </div>
       </Router>
