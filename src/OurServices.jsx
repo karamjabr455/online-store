@@ -10,21 +10,21 @@ const OurServices = () => {
 
   return (
     <>
-      {/* العنوان */}
+      {/* heading */}
       <div className="w-full flex justify-center py-6">
         <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-6 border-b-4 border-white inline-block pb-2 text-white">
           {t('services_title')}
         </h2>
       </div>
 
-      {/* القسم */}
+      {/* Section */}
       <section
         className="w-full py-6 px-4 md:px-8 lg:px-12 xl:px-24 text-white flex flex-col items-center"
         style={{
           background: 'linear-gradient(to right, #7C8761 50%, #D6EFD880 100%)',
         }}
       >
-        {/* الكروت */}
+        {/* Cards */}
         <div className="flex flex-col md:flex-row gap-6 justify-center">
           {/* Card 1 */}
           <div
@@ -32,7 +32,8 @@ const OurServices = () => {
             style={{
               background: 'linear-gradient(135deg, #98a786, #c1d7bc, #d6efd8)',
               borderRadius: '47px',
-              transform: 'translateY(20px)', // نزول الكرت الأول قليلاً
+              transform: 'translateY(20px)',// The first card goes down a little...
+
             }}
           >
             <div className="w-full h-3/4 mb-4 flex-grow">
@@ -55,7 +56,8 @@ const OurServices = () => {
             style={{
               background: 'linear-gradient(135deg, #98a786, #c1d7bc, #d6efd8)',
               borderRadius: '40px',
-              transform: 'translateY(40px)', // نزول الكرت الثاني أكثر من الأول
+              transform: 'translateY(40px)', // The second card is lower than the first
+
             }}
           >
             <div className="w-full h-3/4 mb-4 flex-grow">
@@ -78,7 +80,8 @@ const OurServices = () => {
             style={{
               background: 'linear-gradient(135deg, #98a786, #c1d7bc, #d6efd8)',
               borderRadius: '40px',
-              transform: 'translateY(20px)', // نزول الكرت الثالث بنفس قدر الأول
+              transform: 'translateY(20px)', // The third card goes down by the same amount as the first...
+
             }}
           >
             <div className="w-full h-3/4 mb-4 flex-grow">
@@ -101,7 +104,8 @@ const OurServices = () => {
             style={{
               background: 'linear-gradient(135deg, #98a786, #c1d7bc, #d6efd8)',
               borderRadius: '40px',
-              transform: 'translateY(40px)', // نزول الكرت الرابع بنفس قدر الثاني
+              transform: 'translateY(40px)',// The fourth card goes down by the same amount as the second...
+
             }}
           >
             <div className="w-full h-3/4 mb-4 flex-grow">

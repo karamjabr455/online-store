@@ -4,15 +4,27 @@ import Image1 from './images/Vector.png';
 import Image2 from './images/Vector (1).png';
 import Image3 from './images/ph_phone-call-thin.png';
 import Rectangle61 from './images/Rectangle 61 .png';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRight } from 'react-icons/fa';
 
 const AboutUsSection = () => {
   const { t } = useTranslation();
+
+
+  {/*Go to OfferPage section */}
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/offer');
+  };
   const [props] = useSpring(() => ({
     opacity: 1,
     transform: 'translateY(0)',
     config: { tension: 170, friction: 26 }
+
+
+
+    
   }));
 
   return (
@@ -87,10 +99,13 @@ const AboutUsSection = () => {
           <p className="text-white font-bold mb-4 uppercase" style={{ fontSize: '30px' }}>
             {t('limited_offer_description')}
           </p>
-          <button className="bg-transparent text-white  px-6 py-2 rounded-full flex items-center hover:bg-white hover:text-black transition">
-            <span className="mr-2">{t('grab_it_now')}</span>
-            <FaArrowRight />
-          </button>
+          <button
+      className="bg-transparent text-white px-6 py-2 rounded-full flex items-center hover:bg-white hover:text-black transition"
+      onClick={handleClick}
+    >
+      <span className="mr-2">{t('grab_it_now')}</span>
+      <FaArrowRight />
+    </button>
         </div>
       </div>
     </animated.section>

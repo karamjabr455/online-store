@@ -14,8 +14,12 @@ import Verify from "./Verify";
 import Welcome from "./Welcome";
 import Productsdetails from './Productsdetails'
 import Home from './components/Home'; 
-
+import OfferPage from './OfferPage';
+import Cart from './Cart';
+import Checkout from './Checkout'
 import { ThemeProvider } from './ThemeContext'; 
+
+
 
 function App() {
   return (
@@ -30,6 +34,11 @@ function App() {
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/home" element={<Home />} />
             <Route path="/products" element={<Productsdetails />} />
+            <Route path="/offer" element={<OfferPage  />} />
+            <Route path="/Cart" element={<Cart />} />  
+            <Route path="/Checkout" element={<Checkout />} /> 
+         
+
           </Routes>
         </div>
       </Router>

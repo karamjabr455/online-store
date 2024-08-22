@@ -22,7 +22,7 @@ function Productsdetails() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [rating, setRating] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   
   const [filterOpen, setFilterOpen] = useState(false);
 
@@ -50,15 +50,15 @@ function Productsdetails() {
     setRating(newRating);
   };
 
-  const handleIncrease = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
-  };
+  const handleIncrease = () => setQuantity(prevQuantity => prevQuantity + 1);
+
 
   const handleDecrease = () => {
-    if (quantity > 0) {
+    if (quantity > 1) { // Change to > 1 to prevent going below 1
       setQuantity(prevQuantity => prevQuantity - 1);
     }
   };
+
 
   const totalPrice = (quantity * pricePerUnit).toFixed(2);
   const { t } = useTranslation();
@@ -282,9 +282,11 @@ function Productsdetails() {
     </div>
 
     <div className="bg-white bg-opacity-0 shadow-lg rounded-lg p-6 w-full max-w-full md:max-w-[500px]">
-      <p className="text-[#d0d0d0]">
-      {product?.description || t('product_description')}
-      </p>
+            <p className="text-[#d0d0d0]">
+            Add a touch of nature and liveliness to your garden or office with our planters.
+            </p>
+
+           
 
       <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {[
@@ -314,7 +316,7 @@ function Productsdetails() {
           >
                     <FaMinus />
                   </button>
-                  <span className="text-2xl text-white">{t('quantity')}</span>
+                  <span className="text-2xl text-white">{quantity}</span>
                   <button
                     onClick={handleIncrease}
                     className="bg-[#7C8761] text-white p-3 rounded-full border border-black hover:bg-[#6A704F] transition focus:outline-none"

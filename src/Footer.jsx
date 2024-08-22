@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './images/logo.png'; // تأكد من مسار اللوجو
+import Logo from './images/logo.png'; 
 import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
@@ -13,7 +13,8 @@ const Footer = () => {
         background: 'linear-gradient(135deg, #809b72, #779b72, #6f966d)',
       }}
     >
-      {/* القسم اليسار */}
+      {/*left section*/}
+
       <div className="w-full lg:w-1/3 p-8 flex flex-col items-center lg:items-start text-black">
         <img src={Logo} alt="Logo" className="mb-4" style={{ maxWidth: '120px' }} />
         <p className="text-sm text-white" style={{ fontSize: '14px' }}>
@@ -21,11 +22,11 @@ const Footer = () => {
         </p>
       </div>
 
-      {/* القسم اليميني */}
+{/* right section */}
       <div className="w-full lg:w-2/3 flex flex-col lg:flex-row justify-evenly p-8 text-white">
-        {/* القسم الأول */}
-        <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
-          <h3 className="font-bold mb-2 border-b-2 border-white pb-1">{t('footer.quick_links')}</h3>
+{/* First section */}
+<div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
+          <h3 className="font-bold mb-2 border-b-2 border-white pb-1">{t('quick_links')}</h3>
           <ul className="space-y-2">
             <li><a href="#home" className="hover:underline">{t('home')}</a></li>
             <li><a href="#our-products" className="hover:underline">{t('products')}</a></li>
@@ -34,7 +35,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* القسم الثاني */}
+{/* Second Section */}
         <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
           <h3 className="font-bold mb-2 border-b-2 border-white pb-1">{t('contact_us')}</h3>
           <div className="flex items-center mb-2">
@@ -47,8 +48,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* القسم الثالث */}
-        <div className="flex flex-col items-center lg:items-start">
+{/* Section Three */}
+<div className="flex flex-col items-center lg:items-start">
           <h3 className="font-bold mb-2 border-b-2 border-white pb-1">{t('follow_us')}</h3>
           <div className="flex space-x-4">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">

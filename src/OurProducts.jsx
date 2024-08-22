@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaCheckCircle } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-// استيراد الصور
+// Import images
 import Product1 from './images/1.png';
 import Product2 from './images/2.png';
 import Product3 from './images/3.png';
@@ -14,7 +14,7 @@ import Product6 from './images/2.png';
 import Product7 from './images/3.png';
 import Product8 from './images/4.png';
 
-// إعدادات السلايدر
+// Slider settings
 const sliderSettings = {
   dots: true,
   infinite: true,
@@ -52,20 +52,32 @@ const OurProducts = ({ title }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const handleSeeMoreClick = (product) => {
-    navigate('/products', { state: { product } });
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    setShowConfirmation(true);
+    setTimeout(() => {
+      setShowConfirmation(false);
+    }, 5000);
   };
 
   const products = [
-    { image: Product1, name: 'Succulents', price: '30.00$' },
-    { image: Product2, name: 'Bromeliads', price: '50.00$' },
-    { image: Product3, name: 'Calathea', price: '20.00$' },
-    { image: Product4, name: 'Croton', price: '40.00$' },
-    { image: Product5, name: 'Succulents', price: '30.00$' },
-    { image: Product6, name: 'Bromeliads', price: '50.00$' },
-    { image: Product7, name: 'Calathea', price: '20.00$' },
-    { image: Product8, name: 'Croton', price: '40.00$' },
+    { image: Product1, name: 'Succulents', price: '30.00$', description: 'Description of Succulents' },
+    { image: Product2, name: 'Bromeliads', price: '50.00$', description: 'Description of Bromeliads' },
+    { image: Product3, name: 'Calathea', price: '20.00$', description: 'Description of Calathea' },
+    { image: Product4, name: 'Croton', price: '40.00$', description: 'Description of Croton' },
+    { image: Product5, name: 'Succulents', price: '30.00$', description: 'Description of Succulents' },
+    { image: Product6, name: 'Bromeliads', price: '50.00$', description: 'Description of Bromeliads' },
+    { image: Product7, name: 'Calathea', price: '20.00$', description: 'Description of Calathea' },
+    { image: Product8, name: 'Croton', price: '40.00$', description: 'Description of Croton' },
   ];
+
+  const handleSeeMore = (product) => {
+    navigate('/products', { state: { product } });
+  };
 
   return (
     <>
@@ -83,7 +95,7 @@ const OurProducts = ({ title }) => {
                 <div className="relative w-full">
                   <img src={product.image} alt={`Product ${index + 1}`} className="w-full h-auto rounded-lg" />
                   <button
-                    onClick={() => handleSeeMoreClick(product)}
+                    onClick={() => handleSeeMore(product)}
                     className="absolute bottom-0 left-0 w-full bg-[#d8ebda] text-[#1A5319] font-semibold text-sm py-2 rounded-b-lg"
                     style={{ fontSize: '14px' }}
                   >
@@ -92,7 +104,10 @@ const OurProducts = ({ title }) => {
                 </div>
                 <h3 className="text-lg font-semibold mt-4 text-center font-poppins">{t(product.name.toLowerCase())}</h3>
                 <p className="text-md text-gray-300 text-center font-poppins">{product.price}</p>
-                <button className="mt-2 bg-white text-black p-2 rounded-full flex justify-center items-center">
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="mt-2 bg-white text-black p-2 rounded-full flex justify-center items-center"
+                >
                   <FaShoppingCart />
                 </button>
               </div>
@@ -100,6 +115,13 @@ const OurProducts = ({ title }) => {
           </Slider>
         </div>
       </section>
+
+      {showConfirmation && (
+        <div className="fixed top-4 right-4 bg-[#99a184] text-[#1A5319] px-6 py-3 rounded-[25px] shadow-md flex items-center justify-center z-50">
+          <FaCheckCircle className="mr-2" />
+          {t('product_added_successfully')}
+        </div>
+      )}
     </>
   );
 };
