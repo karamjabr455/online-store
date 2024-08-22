@@ -25,11 +25,11 @@ const ThemeToggleButton = () => {
 function LogIn() {
   const { t } = useTranslation();
   const { darkMode } = useContext(ThemeContext);
-  const navigate = useNavigate(); // تهيئة useNavigate
+  const navigate = useNavigate(); 
 
   const handleLogin = (event) => {
-    event.preventDefault(); // منع التحديث التلقائي للصفحة
-    // التوجيه إلى صفحة الهوم
+    event.preventDefault(); 
+    
     navigate('/home');
   };
 
