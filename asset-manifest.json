@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/online-store/static/css/main.bf06eda8.css",
-    "main.js": "/online-store/static/js/main.c758cb4b.js",
+    "main.js": "/online-store/static/js/main.d1aac550.js",
     "static/media/background-image.png": "/online-store/static/media/background-image.d1afa9c22169d1dda581.png",
     "static/media/Green Plant.png": "/online-store/static/media/Green Plant.16f797facfa73ec33e4d.png",
     "static/media/flower-image.png": "/online-store/static/media/flower-image.58b1d9b2581ac924bd4f.png",
@@ -31,10 +31,10 @@
     "static/media/slick.woff": "/online-store/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/online-store/index.html",
     "main.bf06eda8.css.map": "/online-store/static/css/main.bf06eda8.css.map",
-    "main.c758cb4b.js.map": "/online-store/static/js/main.c758cb4b.js.map"
+    "main.d1aac550.js.map": "/online-store/static/js/main.d1aac550.js.map"
   },
   "entrypoints": [
     "static/css/main.bf06eda8.css",
-    "static/js/main.c758cb4b.js"
+    "static/js/main.d1aac550.js"
   ]
 }
