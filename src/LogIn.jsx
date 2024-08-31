@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // تأكد من استيراد Link هنا
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PlantBackground from './images/Rectangle 16.png';
 import Logo from './images/logo.png';
 import { FaSignInAlt } from 'react-icons/fa';
@@ -13,10 +13,7 @@ const ThemeToggleButton = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="theme-toggle-button"
-    >
+    <button onClick={toggleDarkMode} className="theme-toggle-button">
       {darkMode ? '☀️' : '🌙'}
     </button>
   );
@@ -25,12 +22,157 @@ const ThemeToggleButton = () => {
 function LogIn() {
   const { t } = useTranslation();
   const { darkMode } = useContext(ThemeContext);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [verificationCode, setVerificationCode] = useState(['', '', '', '', '', '']);
+  const [loginMessage, setLoginMessage] = useState('');
+  const [loginError, setLoginError] = useState(false);
 
   const handleLogin = (event) => {
-    event.preventDefault(); 
-    
-    navigate('/home');
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('identifier', identifier);
+    formData.append('password', password);
+
+    fetch('https://abdulrahman-bashir.trainees-mad-s.com/api/v1/auth/login', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => {
+      console.log('Login Response Status:', response.status); // طباعة حالة الاستجابة
+      if (response.ok) {
+        return response.json().then(data => ({ status: response.status, data }));
+      } else {
+        return response.text().then(text => ({ status: response.status, data: text }));
+      }
+    })
+    .then(({ status, data }) => {
+      console.log('Login Response Data:', data); // طباعة بيانات الاستجابة
+      if (status === 200) {
+        setLoginMessage("User logged in successfully, we sent a 2FA code to your email. Please check it.");
+        setLoginError(false);
+        setShowModal(true); // عرض نافذة التحقق
+      } else {
+        setLoginMessage("Error logging in. Please check your credentials.");
+        setLoginError(true);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      setLoginMessage("Error logging in. Please try again.");
+      setLoginError(true);
+    });
+  };
+
+  const handleCodeChange = (index, value) => {
+    const newCode = [...verificationCode];
+    newCode[index] = value;
+    setVerificationCode(newCode);
+  };
+
+  const handleVerifyCode = () => {
+    const code = verificationCode.join('');
+
+    const formData = new FormData();
+    formData.append('email', identifier);
+    formData.append('TwoFactorAuth', code);
+
+    fetch('https://abdulrahman-bashir.trainees-mad-s.com/api/v1/auth/confirm-2fa-code', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => {
+      console.log('Verify Code Response Status:', response.status); // طباعة حالة الاستجابة
+      if (response.ok) {
+        return response.json().then(data => ({ status: response.status, data }));
+      } else {
+        return response.text().then(text => ({ status: response.status, data: text }));
+      }
+    })
+    .then(({ status, data }) => {
+      console.log('Verify Code Response Data:', data); // طباعة بيانات الاستجابة
+      if (status === 200) {
+        setLoginMessage("Verification successful!");
+        setLoginError(false);
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('token_type', data.token_type);
+        localStorage.setItem('expires_in', data.expires_in);
+
+        // طلب تجديد التوكن بعد التحقق بنجاح
+        return fetch('https://abdulrahman-bashir.trainees-mad-s.com/api/v1/auth/refresh-token', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${data.access_token}`,
+          },
+        })
+          .then(response => {
+            console.log('Refresh Token Response Status:', response.status); // طباعة حالة الاستجابة
+            if (response.ok) {
+              return response.json().then(data => ({ status: response.status, data }));
+            } else {
+              return response.text().then(text => ({ status: response.status, data: text }));
+            }
+          })
+          .then(({ status, data }) => {
+            console.log('Refresh Token Response Data:', data); // طباعة بيانات الاستجابة
+            if (status === 200) {
+              // تخزين التوكن المجدد
+              localStorage.setItem('access_token', data.access_token);
+              localStorage.setItem('expires_in', data.expires_in);
+            } else {
+              console.error("Error refreshing token.");
+            }
+          });
+      } else {
+        setLoginMessage("Invalid verification code. Please try again.");
+        setLoginError(true);
+      }
+    })
+    .then(() => {
+      navigate('/home');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      setLoginMessage("Error verifying code. Please try again.");
+      setLoginError(true);
+    });
+  };
+
+  const handleResendCode = () => {
+    const formData = new FormData();
+    formData.append('email', identifier);
+
+    fetch('https://abdulrahman-bashir.trainees-mad-s.com/api/v1/auth/resend-2fa-code', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => {
+      console.log('Resend Code Response Status:', response.status); // طباعة حالة الاستجابة
+      if (response.ok) {
+        return response.json().then(data => ({ status: response.status, data }));
+      } else {
+        return response.text().then(text => ({ status: response.status, data: text }));
+      }
+    })
+    .then(({ status, data }) => {
+      console.log('Resend Code Response Data:', data); // طباعة بيانات الاستجابة
+      if (status === 200) {
+        setLoginMessage("2FA code has been resent to your email.");
+        setLoginError(false);
+      } else {
+        setLoginMessage("Error resending 2FA code. Please try again.");
+        setLoginError(true);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      setLoginMessage("Error resending code. Please try again.");
+      setLoginError(true);
+    });
   };
 
   return (
@@ -51,11 +193,7 @@ function LogIn() {
       </nav>
 
       <div className={`absolute top-4 left-4 md:top-8 md:left-16 hidden lg:block ${darkMode ? 'text-dark-title' : 'text-black'}`}>
-        <img
-          src={Logo}
-          alt="Logo"
-          className="w-20 xl:w-24"
-        />
+        <img src={Logo} alt="Logo" className="w-20 xl:w-24" />
       </div>
 
       <div
@@ -88,17 +226,16 @@ function LogIn() {
         <form className="space-y-4 w-full max-w-xs flex flex-col items-center" onSubmit={handleLogin}>
           <div className="flex flex-col space-y-4 w-full">
             <input
-              type="email"
+              type="text"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
               className={`mt-1 p-2 w-full border-b bg-transparent placeholder-white focus:outline-none text-sm ${darkMode ? 'text-dark-title border-gray-600 placeholder-gray-400' : 'text-white border-gray-300 placeholder-white'}`}
               placeholder={t('login.emailPlaceholder')}
             />
             <input
-              type="tel"
-              className={`mt-1 p-2 w-full border-b bg-transparent placeholder-white focus:outline-none text-sm ${darkMode ? 'text-dark-title border-gray-600 placeholder-gray-400' : 'text-white border-gray-300 placeholder-white'}`}
-              placeholder={t('login.phonePlaceholder')}
-            />
-            <input
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className={`mt-1 p-2 w-full border-b bg-transparent placeholder-white focus:outline-none text-sm ${darkMode ? 'text-dark-title border-gray-600 placeholder-gray-400' : 'text-white border-gray-300 placeholder-white'}`}
               placeholder={t('login.passwordPlaceholder')}
             />
@@ -130,6 +267,46 @@ function LogIn() {
           </div>
         </form>
       </div>
+
+     {/* تعديل z-index للمودال */}
+{showModal && (
+  <div
+    className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ${darkMode ? 'text-dark-title' : 'text-white'}`}
+    style={{ zIndex: 9999 }}  // إضافة zIndex هنا
+  >
+    <div className={`bg-white p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <h3 className="text-lg font-bold mb-4">Enter 2FA Code</h3>
+      <div className="flex space-x-2">
+        {verificationCode.map((code, index) => (
+          <input
+            key={index}
+            type="text"
+            value={code}
+            onChange={(e) => handleCodeChange(index, e.target.value)}
+            className={`w-10 h-10 text-center border rounded ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
+            maxLength={1}
+          />
+        ))}
+      </div>
+      <div className="flex justify-between mt-4">
+        <button
+          onClick={handleVerifyCode}
+          className={`py-2 px-4 rounded-full border ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-[#6c825a] border-[#5a6c50] text-white'} hover:bg-[#5a6c50] transition`}
+        >
+          Verify
+        </button>
+        <button
+          onClick={handleResendCode}
+          className={`py-2 px-4 rounded-full border ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-[#6c825a] border-[#5a6c50] text-white'} hover:bg-[#5a6c50] transition`}
+        >
+          Resend Code
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+      
     </div>
   );
 }

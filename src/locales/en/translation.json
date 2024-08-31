@@ -176,7 +176,15 @@
   "shipping": "Shipping",
   "total_cost": "Total Cost",
   "apply": "Apply",
-  "next": "Next"
+  "next": "Next",
+  "resendButton": "Resend Code",
+  "resendSuccess": "Verification code resent successfully!",
+  "resendError": "Failed to resend verification code. Please try again.",
+  "verifySuccess": "Verification successful! Redirecting to login...",
+  "verifyError": "Invalid verification code. Please try again.",
+  "redirectingMessage": "Redirecting to login page in 5 seconds...",
+  "button": "Confirm Code",
+  "uploadProfilePhoto":"ProfilePhoto"
   
   
 

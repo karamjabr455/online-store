@@ -177,7 +177,14 @@
   "shipping": "Versand",
   "total_cost": "Gesamtkosten",
   "apply": "Anwenden",
-  "next": "Weiter"
+  "next": "Weiter",
+  "button": "Code bestätigen",
+  "resendButton": "Code erneut senden",
+  "resendSuccess": "Bestätigungscode erfolgreich erneut gesendet!",
+  "resendError": "Fehler beim erneuten Senden des Bestätigungscodes. Bitte versuchen Sie es erneut.",
+  "verifySuccess": "Bestätigung erfolgreich! Weiterleitung zur Anmeldung...",
+  "verifyError": "Ungültiger Bestätigungscode. Bitte versuchen Sie es erneut.",
+  "redirectingMessage": "Weiterleitung zur Anmeldeseite in 5 Sekunden..."
 
   
 

@@ -176,7 +176,14 @@
   "shipping": "Expédition",
   "total_cost": "Coût total",
   "apply": "Appliquer",
-  "next": "Suivant"
+  "next": "Suivant",
+  "button": "Confirmer le code",
+  "resendButton": "Renvoyer le code",
+  "resendSuccess": "Code de vérification renvoyé avec succès !",
+  "resendError": "Échec de l'envoi du code de vérification. Veuillez réessayer.",
+  "verifySuccess": "Vérification réussie ! Redirection vers la connexion...",
+  "verifyError": "Code de vérification invalide. Veuillez réessayer.",
+  "redirectingMessage": "Redirection vers la page de connexion dans 5 secondes..."
 
 
 
