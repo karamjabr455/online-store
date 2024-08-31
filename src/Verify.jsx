@@ -18,9 +18,13 @@ function Verify() {
   const [isVerifySuccess, setIsVerifySuccess] = useState(false);
   const [isVerifyError, setIsVerifyError] = useState(false);
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // For the loading state...
 
-  // استرجاع البريد الإلكتروني من localStorage
-  const email = localStorage.getItem('userEmail');
+  const [isResending, setIsResending] = useState(false); //For status loading during retransmission
+
+
+// Retrieve email from localStorage
+const email = localStorage.getItem('userEmail');
 
   const handleResendCode = () => {
     if (!email) {
@@ -30,6 +34,9 @@ function Verify() {
       return;
     }
 
+    setIsResending(true); // start downloading
+
+
     const formData = new FormData();
     formData.append('email', email);
 
@@ -38,16 +45,34 @@ function Verify() {
       body: formData,
     })
     .then(response => {
-      console.log("Response Status:", response.status); // طباعة حالة الاستجابة
-      return response.json(); // تحويل الاستجابة إلى JSON
+      console.log("Response Status:", response.status);
+      setIsResending(false);
+
+      switch (response.status) {
+        case 200:
+          return response.json(); 
+        case 404:
+          setIsResendSuccess(false);
+          setIsResendError(true);
+          console.log("Endpoint not found.");
+          return Promise.reject("Endpoint not found.");
+        case 400:
+          setIsResendSuccess(false);
+          setIsResendError(true);
+          console.log("Bad request.");
+          return Promise.reject("Bad request.");
+        default:
+          setIsResendSuccess(false);
+          setIsResendError(true);
+          console.log("An error occurred.");
+          return Promise.reject("An error occurred.");
+      }
     })
     .then(data => {
-      console.log("Response Data:", data); // طباعة بيانات الاستجابة
+      console.log("Resend Response Data:", data);
       if (data.access_token) {
-        // تخزين التوكن في localStorage
-        localStorage.setItem('authToken', data.access_token);
-      }
-      if (data.success) {
+        localStorage.setItem('authToken', data.access_token); // Store the token in localStorage
+
         setIsResendSuccess(true);
         setIsResendError(false);
       } else {
@@ -56,8 +81,7 @@ function Verify() {
       }
     })
     .catch(error => {
-      console.error("Error:", error); // طباعة الأخطاء في حال وجودها
-      setIsResendSuccess(false);
+      console.error("Resend Error:", error);
       setIsResendError(true);
     });
   };
@@ -70,6 +94,8 @@ function Verify() {
       return;
     }
 
+    setIsLoading(true); // بدء التحميل
+
     const formData = new FormData();
     formData.append('email', email);
     formData.append('verification_code', verificationCode.join(''));
@@ -79,20 +105,46 @@ function Verify() {
       body: formData,
     })
     .then(response => {
-      console.log("Response Status:", response.status); // طباعة حالة الاستجابة
-      return response.json(); // تحويل الاستجابة إلى JSON
+      console.log("Verify Response Status:", response.status);
+      setIsLoading(false); 
+
+      switch (response.status) {
+        case 200:
+          return response.json(); // Convert the response to JSON
+
+        case 400:
+          setIsVerifySuccess(false);
+          setIsVerifyError(true);
+          console.log("Bad request.");
+          return Promise.reject("Bad request.");
+        case 404:
+          setIsVerifySuccess(false);
+          setIsVerifyError(true);
+          console.log("Endpoint not found.");
+          return Promise.reject("Endpoint not found.");
+        case 402:
+          setIsVerifySuccess(false);
+          setIsVerifyError(true);
+          console.log("Payment required.");
+          return Promise.reject("Payment required.");
+        default:
+          setIsVerifySuccess(false);
+          setIsVerifyError(true);
+          console.log("An error occurred.");
+          return Promise.reject("An error occurred.");
+      }
     })
     .then(data => {
-      console.log("Response Data:", data); // طباعة بيانات الاستجابة
+      console.log("Verify Response Data:", data);
       if (data.access_token) {
-        // تخزين التوكن في localStorage
-        localStorage.setItem('authToken', data.access_token);
+        localStorage.setItem('authToken', data.access_token); // Store the token in localStorage
+
         setIsVerifySuccess(true);
         setIsVerifyError(false);
         setIsRedirecting(true);
 
-        // الانتظار لمدة 5 ثواني قبل الانتقال
-        setTimeout(() => {
+// Go to the login page
+setTimeout(() => {
           navigate('/login');
         }, 5000);
       } else {
@@ -101,9 +153,9 @@ function Verify() {
       }
     })
     .catch(error => {
-      console.error("Error:", error); // طباعة الأخطاء في حال وجودها
-      setIsVerifySuccess(false);
+      console.error("Verify Error:", error);
       setIsVerifyError(true);
+      setIsLoading(false);// Stop downloading in case of error
     });
   };
 
@@ -227,13 +279,16 @@ function Verify() {
             <button
               type="button"
               onClick={handleVerifyCode}
+              disabled={isLoading}    
               className={`w-full sm:w-80 py-3 rounded-full border transition text-sm ${
-                darkMode
+                isLoading
+                  ? "opacity-50 cursor-not-allowed" 
+                  : darkMode
                   ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
                   : "bg-[#6c825a] border-white hover:bg-[#5a6c50]"
               } text-white`}
             >
-              {t("button")}
+              {isLoading ? t("loading") : t("button")}
             </button>
           </div>
 
@@ -241,13 +296,16 @@ function Verify() {
             <button
               type="button"
               onClick={handleResendCode}
+              disabled={isResending} 
               className={`w-full sm:w-80 py-3 rounded-full border transition text-sm ${
-                darkMode
+                isResending
+                  ? "opacity-50 cursor-not-allowed" 
+                  : darkMode
                   ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
                   : "bg-[#6c825a] border-white hover:bg-[#5a6c50]"
               } text-white`}
             >
-              {t("resendButton")}
+              {isResending ? t("resending") : t("resendButton")}
             </button>
           </div>
 

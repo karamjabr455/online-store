@@ -43,19 +43,24 @@ function LogIn() {
       body: formData,
     })
     .then(response => {
-      console.log('Login Response Status:', response.status); // طباعة حالة الاستجابة
+      console.log('Login Response Status:', response.status); // Print the response status
+
       if (response.ok) {
         return response.json().then(data => ({ status: response.status, data }));
       } else {
         return response.text().then(text => ({ status: response.status, data: text }));
       }
     })
+
+
     .then(({ status, data }) => {
-      console.log('Login Response Data:', data); // طباعة بيانات الاستجابة
+      console.log('Login Response Data:', data); // Print response data
+
       if (status === 200) {
         setLoginMessage("User logged in successfully, we sent a 2FA code to your email. Please check it.");
         setLoginError(false);
-        setShowModal(true); // عرض نافذة التحقق
+        setShowModal(true); // Display the verification window
+
       } else {
         setLoginMessage("Error logging in. Please check your credentials.");
         setLoginError(true);
@@ -86,7 +91,7 @@ function LogIn() {
       body: formData,
     })
     .then(response => {
-      console.log('Verify Code Response Status:', response.status); // طباعة حالة الاستجابة
+      console.log('Verify Code Response Status:', response.status); // Print the response status
       if (response.ok) {
         return response.json().then(data => ({ status: response.status, data }));
       } else {
@@ -94,7 +99,7 @@ function LogIn() {
       }
     })
     .then(({ status, data }) => {
-      console.log('Verify Code Response Data:', data); // طباعة بيانات الاستجابة
+      console.log('Verify Code Response Data:', data); // Print response data
       if (status === 200) {
         setLoginMessage("Verification successful!");
         setLoginError(false);
@@ -102,7 +107,8 @@ function LogIn() {
         localStorage.setItem('token_type', data.token_type);
         localStorage.setItem('expires_in', data.expires_in);
 
-        // طلب تجديد التوكن بعد التحقق بنجاح
+        // Request to renew the token after successful verification...
+
         return fetch('https://abdulrahman-bashir.trainees-mad-s.com/api/v1/auth/refresh-token', {
           method: 'GET',
           headers: {
@@ -110,7 +116,7 @@ function LogIn() {
           },
         })
           .then(response => {
-            console.log('Refresh Token Response Status:', response.status); // طباعة حالة الاستجابة
+            console.log('Refresh Token Response Status:', response.status); 
             if (response.ok) {
               return response.json().then(data => ({ status: response.status, data }));
             } else {
@@ -118,9 +124,10 @@ function LogIn() {
             }
           })
           .then(({ status, data }) => {
-            console.log('Refresh Token Response Data:', data); // طباعة بيانات الاستجابة
+            console.log('Refresh Token Response Data:', data); 
             if (status === 200) {
-              // تخزين التوكن المجدد
+              // Store the renewed token
+
               localStorage.setItem('access_token', data.access_token);
               localStorage.setItem('expires_in', data.expires_in);
             } else {
@@ -151,7 +158,7 @@ function LogIn() {
       body: formData,
     })
     .then(response => {
-      console.log('Resend Code Response Status:', response.status); // طباعة حالة الاستجابة
+      console.log('Resend Code Response Status:', response.status);    
       if (response.ok) {
         return response.json().then(data => ({ status: response.status, data }));
       } else {
@@ -159,7 +166,7 @@ function LogIn() {
       }
     })
     .then(({ status, data }) => {
-      console.log('Resend Code Response Data:', data); // طباعة بيانات الاستجابة
+      console.log('Resend Code Response Data:', data); 
       if (status === 200) {
         setLoginMessage("2FA code has been resent to your email.");
         setLoginError(false);

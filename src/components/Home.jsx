@@ -29,7 +29,8 @@ function Home() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [loggedOut, setLoggedOut] = useState(false); // حالة تسجيل الخروج
+  const [loggedOut, setLoggedOut] = useState(false); // Logout status
+
   const navigate = useNavigate();
 
   // Spring animation for sliding in from the top
@@ -73,7 +74,8 @@ function Home() {
       },
     })
     .then(response => {
-      console.log('Logout Response Status:', response.status); // طباعة حالة الاستجابة
+      console.log('Logout Response Status:', response.status); // Print the response status
+
       if (response.ok) {
         return response.json().then(data => ({ status: response.status, data }));
       } else {
@@ -81,13 +83,15 @@ function Home() {
       }
     })
     .then(({ status, data }) => {
-      console.log('Logout Response Data:', data); // طباعة بيانات الاستجابة
+      console.log('Logout Response Data:', data);// Print response data
+
       if (status === 200) {
         alert("You have been logged out successfully.");
         localStorage.removeItem('access_token');
         localStorage.removeItem('token_type');
         localStorage.removeItem('expires_in');
-        setLoggedOut(true); // تحديث حالة تسجيل الخروج
+        setLoggedOut(true); // Update logout status
+
       } else {
         alert("Error logging out. Please try again.");
       }
