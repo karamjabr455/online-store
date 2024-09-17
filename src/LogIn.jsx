@@ -282,7 +282,7 @@ function LogIn() {
     style={{ zIndex: 9999 }}  // إضافة zIndex هنا
   >
     <div className={`bg-white p-6 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-      <h3 className="text-lg font-bold mb-4">Enter 2FA Code</h3>
+      <h3 className="text-lg font-bold mb-4 text-gray-600">Enter 2FA Code</h3>
       <div className="flex space-x-2">
         {verificationCode.map((code, index) => (
           <input
